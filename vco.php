@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(0);
 echo "\e[0;33m[!] Reff: \e[0m";
 $reff =trim(fgets(STDIN));
 
@@ -116,8 +116,10 @@ if ($httpcode2 == 200) {
     echo "\e[0;33m[!]\e[0m TOKEN   : \e[0;32m$token\e[0m\n";
     sleep(3);
 
+
+    echo "\e[0;33m[!]\e[0m OTP     : ";
     
-    for ($i=0; $i < 120; $i++) { 
+    for ($i=0; $i < 15; $i++) { 
 
       //CEK EMAIL
       $curl = curl_init();
@@ -137,7 +139,6 @@ if ($httpcode2 == 200) {
       $response = curl_exec($curl);
       curl_close($curl);
       $otp=explode('</p>',explode('<p style="color: #fa7800; font-weight: bold; text-align: center; font-size: 40px">',$response)[1])[0];
-      echo "\e[0;33m[!]\e[0m OTP     : ";
     
       if ($otp==null){
         continue;
@@ -179,7 +180,7 @@ if ($httpcode2 == 200) {
       echo "\e[0;33m[!]\e[0m STATUS  : \e[0;32m$pesan2\e[0m\n";
       goto login;
     }else{
-      echo  "\e\33[31;1mOTP SALAH\n";
+      echo  "\e\33[31;1mGAGAL MEMASUKKAN OTP\n";
       goto login;
     }
   }else{
