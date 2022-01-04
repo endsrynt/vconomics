@@ -124,7 +124,7 @@ if ($httpcode2 == 200) {
       //CEK EMAIL
       $curl = curl_init();
       curl_setopt_array($curl, array(
-      CURLOPT_URL => 'https://generator.email/inbox3',
+      CURLOPT_URL => 'https://generator.email/'.$domain.'/'.$namalengkap,
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_ENCODING => '',
       CURLOPT_MAXREDIRS => 10,
@@ -145,9 +145,12 @@ if ($httpcode2 == 200) {
       }else{
         echo "\e[0;32m$otp\e[0m\n";
         break;
+        goto input;
       }
     };
+	  
 
+	input:
     //INPUT OTP
     $curl = curl_init();
     curl_setopt_array($curl, array(
